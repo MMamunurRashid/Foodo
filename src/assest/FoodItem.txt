@@ -1,0 +1,84 @@
+item: 03
+title: Full Chicken
+img:https://i.ibb.co/qnhWbJ0/h2-food-item-4.png
+price:750
+
+item: 01
+title: Prawn with Noodles
+img:https://i.ibb.co/SKrGTSc/h2-food-item-1.png
+price: 200
+
+
+item: 02
+title: Chicken Leg Fry
+img:https://i.ibb.co/tsj0gx6/h2-food-item-2.png
+price: 300
+
+
+item: 04
+title: Mutton Kabab
+img: https://i.ibb.co/j6ms5ty/h2-food-item-5.png
+price: 500
+
+
+item: 05
+title: Burger with Drinks
+img:https://i.ibb.co/tH8vy9T/h2-food-item-6.png
+price: 300
+
+
+item: 06
+title: Golden Coffe
+img:https://i.ibb.co/XVstNwh/h2-food-item-3.png
+price: 250
+
+
+item: 07
+title: Chicken Tikka
+img:https://i.ibb.co/R0V56X8/Chicken-Tikka-2-3.jpg
+price: 350
+
+
+item: 08
+title: Fried Rice
+img:https://i.ibb.co/xJ0mJ5C/chicken-fried-rice00032a-1200x1200-1.jpg
+price:250
+
+
+item: 09
+title: Noodles
+img:https://i.ibb.co/KNzcS0S/2col-gallery-big-04.png
+price: 150
+
+
+item: 10
+title: Chicken BBQ
+img:https://i.ibb.co/Vt36sXK/feat-spatchcock-bbq-chicken-min.jpg
+price: 700
+
+
+item: 11
+title: Beef BBQ
+img:https://i.ibb.co/PztRFCM/cumin-beef-b1ee1b6.jpg
+price:1050
+
+
+item: 12
+title: Fish BBQ
+img:https://i.ibb.co/Bg4fQd3/Greek-Style-Grilled-Fish-1.jpg
+price:900
+
+
+item: 13
+title: Prawn Fried
+img:https://i.ibb.co/Lx2XNVV/h2-regular-items11.png
+price: 800
+
+
+item: 14
+title: Fish Fry
+img:https://i.ibb.co/30Kfx19/h2-banner-img333.png
+price: 500
+
+
+

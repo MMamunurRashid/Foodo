@@ -1,10 +1,11 @@
 import React from "react";
 import Categories from "../Categories/Categories";
-import SVG from "../../assest/sub-title-vec.svg";
-import HomeSlider from "./HomeSlider";
+
 import HomeSlide2 from "./HomeSlide2";
 import HomeFoodCarousel from "./HomeFoodCarousel/HomeFoodCarousel";
 import AboutFoodo from "../AboutFoodo/AboutFoodo";
+import PhotoGallary from "../PhotoGallary/PhotoGallary";
+import Chef from "../Chef/Chef";
 
 const Home = () => {
   return (
@@ -24,8 +25,9 @@ const Home = () => {
         <HomeSlide2 />
         <HomeFoodCarousel />
         <AboutFoodo />
-
+        <PhotoGallary />
         <Categories />
+        <Chef />
       </div>
     </div>
   );

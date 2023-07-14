@@ -34,7 +34,7 @@ const HomeSlide2 = () => {
     },
   ];
   return (
-    <div className="shadow-2xl shadow-slate-900 rounded-md">
+    <div className="shadow-2xl shadow-slate-900 rounded-md pt-20">
       <div>
         <Slider autoplay={1500} className="slider-wrapper">
           {content.map((item, index) => (

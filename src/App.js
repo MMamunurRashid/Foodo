@@ -11,7 +11,7 @@ function App() {
     setPreLoader(true);
     setTimeout(() => {
       setPreLoader(false);
-    }, 5000);
+    }, 2000);
   }, []);
   return (
     <div className=" max-w-[1440px] mx-auto ">

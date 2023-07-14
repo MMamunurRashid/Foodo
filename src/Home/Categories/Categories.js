@@ -20,7 +20,7 @@ function Home() {
     fetchData();
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-7 max-w-[1440px] my-7 mx-40 justify-items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-7 max-w-[1440px] my-7 mx-5 md:mx-40 justify-items-center">
       {data?.map((item) => (
         <div key={item.item} className="card w-full  shadow-xl ">
           <div className="relative">

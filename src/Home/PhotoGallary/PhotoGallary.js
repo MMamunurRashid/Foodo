@@ -44,45 +44,45 @@ export default function PhotoGallary() {
           disableOnInteraction: false,
         }}
         modules={[Pagination, Autoplay]}
-        className="mySwiper"
+        className="mySwiper "
       >
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90" >
           <img src="https://i.ibb.co/zNX9cct/2col-gallery-big-06.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/3B8GZJQ/2col-gallery-big-02.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/Vvybqsv/h2-blog1.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img
             src="https://i.ibb.co/ZWR1HfQ/regular-menu-bg-232aaad2.png"
             alt=""
           />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/C7pf72S/recent-post-img-2.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/G7Pm1z1/blog-st-02.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/0Fggm9v/h2-gallery-1.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/SyvtwZN/h2-gallery-6.png" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img
             src="https://i.ibb.co/L6LWkZP/best-restaurants-soleil.jpg"
             alt=""
           />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img src="https://i.ibb.co/m8ydy3h/dining-room.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-90">
           <img
             src="
 https://i.ibb.co/1vHFFTV/TOO-restaurant-Panoramique-vue-Paris-Seine-Tour-Eiffel-2.jpg"

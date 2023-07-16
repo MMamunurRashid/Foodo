@@ -45,9 +45,9 @@ const Chef = () => {
         {chefs?.map((item, i) => (
           <div
             key={i}
-            className="card card-compact w-full bg-base-100 shadow-xl"
+            className="card card-compact w-full bg-slate-100 shadow-xl"
           >
-            <figure>
+            <figure className="transition-transform duration-500 transform ease-in-out hover:scale-110">
               <img src={item.img} alt="Shoes" />
             </figure>
             <div className="card-body text-center">

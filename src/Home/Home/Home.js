@@ -9,7 +9,7 @@ import Chef from "../Chef/Chef";
 
 const Home = () => {
   return (
-    <div>
+    <div id="home">
       {/* <div className="py-96 bg-gradient-to-r from-indigo-500"  style={{ backgroundImage: `url("https://i.ibb.co/fG1C9CD/h2-regular-items-bg-28bec6e3.png")` }}  >
             <h1 className='flex'>
                <img className='w-7 h-7' src={SVG} alt='' /> <small className='px-3 font-mono text-xl'>Welcome to Foodo</small><img className='w-7 h-7' src={SVG} alt='' /> 

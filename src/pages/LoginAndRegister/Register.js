@@ -1,95 +1,163 @@
 import React from 'react';
-import imglogo from '../../assest/logo-removebg.png'
+
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 
 const SignUpPage = () => {
+  const { googleLogin, createUser, updateUser } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const [signupError, setSignupError] = useState("");
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+
+  const handleSignup = (data) => {
+    // console.log(data);
+
+    const email = data.email;
+    const password = data.password;
+    const option = data.option;
+
+    setSignupError("");
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+         
+            setCreatedUserEmail(email);
+            toast.success("Your Registration Successful!!");
+          })
+          .catch((err) => console.error(err));
+      })
+      .catch((err) => {
+        //console.log(err);
+        setSignupError(err.message);
+        toast.error(`${err.message}`);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    // console.log("click");
+    googleLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);/
+      
+      
+        setCreatedUserEmail(user.email);
+        toast.success("Your Registration Successful!!");
+      })
+      .catch((err) => {
+        console.error(err);
+        setSignupError(err.message);
+        toast.error(`${err.message}`);
+      });
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img src={imglogo} />
-        <h2 className="mt-6 text-center text-4xl font-serif font-extrabold text-gray-900">
-          Create an account
-        </h2>
-      </div>
-
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                Name
+    <div>
+      <div className="h-[900px] flex justify-center items-center ">
+        <div className="w-96 p-7">
+          <h2 className="text-xl sm:text-5xl text-center">Sign Up</h2>
+          <form onSubmit={handleSubmit(handleSignup)}>
+            <div className="form-control w-full max-w-xs bg-slate-100">
+              <label className="label">
+                <span className="label-text">Name</span>
               </label>
-              <div className="mt-1">
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
+              <input
+                type="text"
+                {...register("name", {
+                  required: true,
+                })}
+                required
+                className="input input-bordered w-full max-w-xs bg-slate-100"
+              />
             </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email address
+            <div className="form-control w-full max-w-xs bg-slate-100">
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
+              <input
+                type="email"
+                required
+                {...register("email", {
+                  required: true,
+                })}
+                className="input input-bordered w-full max-w-xs bg-slate-100"
+              />
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+            <div className="form-control w-full max-w-xs bg-slate-100">
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
+              <input
+                type="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 8,
+                    message: "Password must be 8 characters or longer",
+                  },
+                  pattern: {
+                    value: /(?=.*[!@#$&*])(?=.*[0-9])/,
+                    message:
+                      "Password must have  number and special characters",
+                  },
+                })}
+                className="input input-bordered w-full max-w-xs bg-slate-100"
+              />
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
-
-            <div>
-              <label
-                htmlFor="passwordConfirmation"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Confirm Password
-              </label>
-              <div className="mt-1">
-                <input
-                  id="passwordConfirmation"
-                  name="passwordConfirmation"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Sign up
-              </button>
-            </div>
+            {/* <select
+              {...register("option", {
+                required: true,
+              })}
+              className="select select-bordered w-full max-w-xs bg-slate-100 mt-3"
+            >
+              <option selected>Buyer</option>
+              <option>Seller</option>
+            </select> */}
+            <input
+              className="btn btn-accent w-full mt-3"
+              value="Sign Up"
+              type="submit"
+            />
+            {signupError && <p className="text-red-600">{signupError}</p>}
           </form>
+          <p>
+            Already have an account?
+            <Link className="text-red-600 hover:text-accent" to="/login">
+              Please Login.
+            </Link>
+          </p>
+          <div className="divider">OR</div>
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline w-full"
+          >
+            <FcGoogle className="w-8 h-8 mr-3" /> CONTINUE WITH GOOGLE
+          </button>
         </div>
       </div>
     </div>

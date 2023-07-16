@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Routes/Routes";
 import { useEffect, useState } from "react";
 import { BounceLoader } from "react-spinners";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [preloader, setPreLoader] = useState(false);
@@ -14,7 +15,7 @@ function App() {
     }, 2000);
   }, []);
   return (
-    <div className=" max-w-[1440px] mx-auto ">
+    <div className=" max-w-[1440px] mx-auto bg-slate-100">
       {preloader ? (
         <div className="flex justify-center items-center w-full h-screen">
           <BounceLoader
@@ -27,7 +28,8 @@ function App() {
         </div>
       ) : (
         <RouterProvider router={router}></RouterProvider>
-      )}
+        
+      )}<Toaster />
     </div>
   );
 }

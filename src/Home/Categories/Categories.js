@@ -20,8 +20,8 @@ function Home() {
     fetchData();
   }, []);
   return (
-    <div className="mt-0 pt-0">
-      <div className="text-center">
+    <div className="mt-0 pt-0" id="menu">
+      <div className="text-center" >
         <span className=" flex justify-center text-xl md:text-2xl BerkshireSwash ">
           <img
             className="mr-2 w-5 md:w-10"
@@ -46,6 +46,7 @@ function Home() {
               <div className="">
                 <img src={item.img} alt={""} className="w-full h-72" />
                 <div />
+                {/* image  hover view button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 bg-opacity-60 hover:opacity-100 transition-opacity duration-300">
                   <Link to="/login">
                     <button className="bg-slate-300 text-gray-800 font-bold py-2 px-4 rounded shadow">

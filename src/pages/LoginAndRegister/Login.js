@@ -92,7 +92,7 @@ const Login = () => {
       </form>
       <p>
         New at Recycle Clothes?
-        <Link className="text-secondary hover:text-accent" to="/sign-up">
+        <Link className="text-secondary hover:text-accent" to="/register">
           Create new Account
         </Link>
       </p>

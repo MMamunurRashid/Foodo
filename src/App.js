@@ -15,7 +15,7 @@ function App() {
     }, 2000);
   }, []);
   return (
-    <div className=" max-w-[1440px] mx-auto bg-slate-100">
+    <div className=" max-w-[1440px] mx-auto bg-slate-100 ">
       {preloader ? (
         <div className="flex justify-center items-center w-full h-screen">
           <BounceLoader

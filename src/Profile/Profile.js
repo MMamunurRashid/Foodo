@@ -60,13 +60,18 @@ const Profile = () => {
   return (
     <div className="pt-20">
       <h1 className="text-5xl">Profile</h1>
-      <p>Name: {user.displayName}</p>
-      <p>Email: {user.email}</p>
-      <p>{user.emailVerified ? "Email Verified" : "Email Not Verified"}</p>
+      <p>Name: {user?.displayName}</p>
+      <p>Email: {user?.email}</p>
+      <p>{user?.emailVerified ? "Email Verified" : "Email Not Verified"}</p>
       {user?.photoURL ? (
         <>
           <img src={user?.photoURL} alt="" />
-          <p>want to change your profile picture? <Link to='/updatePhoto' className="text-red-500">Upload New Photo</Link></p>
+          <p>
+            want to change your profile picture?{" "}
+            <Link to="/updatePhoto" className="text-red-500">
+              Upload New Photo
+            </Link>
+          </p>
         </>
       ) : (
         <>

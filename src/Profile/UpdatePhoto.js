@@ -1,26 +1,28 @@
-import React from 'react';
+import React from "react";
 
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const UpdatePhoto = () => {
+  const { updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-    const {  updateUserProfile } = useContext(AuthContext);
-    const {
-        register,
-        formState: { errors },
-        handleSubmit,
-      } = useForm();
-
-
-      // Upload Image
+  // Upload Image
   const imgbbKey = "035fa433d4769de53906a7872698cbac";
-  const handleAddProfilePhoto = (data) => {
-    const productPhoto = data.productPhoto[0];
+  const handleAddProfile = (data) => {
+    const profilePhoto = data.productPhoto[0];
+
     // console.log(productPhoto);
     const formData = new FormData();
-    formData.append("image", productPhoto);
+    formData.append("image", profilePhoto);
     const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
     fetch(url, {
       method: "POST",
@@ -39,29 +41,32 @@ const UpdatePhoto = () => {
             .catch((error) => {
               console.error(error);
             });
+          toast.success("Your profile picture changed successfully.");
+          navigate("/profile");
         }
       });
   };
-    return (
-        <div className='pt-36'>
-            <h1>Upload your new profile picture</h1>
-            <form onSubmit={handleSubmit(handleAddProfilePhoto)}>
-            <input
-              type="file"
-              {...register("productPhoto", {
-                required: "Product Photo is Required",
-              })}
-              className="input input-bordered w-full"
-              required
-            />
-            <input
-              className="btn btn-accent w-full"
-              value="Submit"
-              type="submit"
-            />
-          </form>
-        </div>
-    );
+  return (
+    <div className="pt-36 px-10 ">
+      <form onSubmit={handleSubmit(handleAddProfile)}>
+        <h1>Upload your new profile picture</h1>
+        <input
+          type="file"
+          {...register("profilePhoto", {
+            required: "Profile Photo is Required",
+          })}
+          className="input input-bordered w-2/4"
+          required
+        />
+
+        <input
+          className="btn btn-accent w-2/4 block my-5 justify-center"
+          value="Submit"
+          type="submit"
+        />
+      </form>
+    </div>
+  );
 };
 
 export default UpdatePhoto;

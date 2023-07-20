@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../../Font/Font.css";
 import { useContext } from "react";
@@ -38,7 +38,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content dropdown mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl NotoSerif"
             >
               <li>
-                <a href="#home">Home</a>
+                <a href="/home">Home</a>
               </li>
 
               <li>
@@ -48,20 +48,23 @@ const Navbar = () => {
                 <a href="#about">About Us</a>
               </li>
               <li>
-              {user?.email ? (
-          <Link  onClick={handleLogout} className="btn btn-ghost">
-            Logout
-          </Link>
-        ) : (
-          <Link  className="btn btn-ghost" to="/login">
-            Login
-          </Link>
-        )}
+                {user?.email ? (
+                  <Link onClick={handleLogout} className="btn btn-ghost">
+                    Logout
+                  </Link>
+                ) : (
+                  <Link className="btn btn-ghost" to="/login">
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
           <div className="flex items-center">
-            <a href="#home" className="btn btn-ghost normal-case text-5xl BerkshireSwash font-bold">
+            <a
+              href="/home"
+              className="btn btn-ghost normal-case text-5xl BerkshireSwash font-bold"
+            >
               Foodo
             </a>
           </div>
@@ -69,7 +72,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu  menu-horizontal px-1 text-2xl NotoSerif">
             <li>
-              <a href="#home">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li>
               <a href="#menu">Menu</a>
@@ -78,23 +81,28 @@ const Navbar = () => {
               <a href="#about">About Us</a>
             </li>
             <li>
-            {user?.email ? (
-          <Link  onClick={handleLogout} >
-            Logout
-          </Link>
-        ) : (
-          <Link  to="/login">
-            Login
-          </Link>
-        )}
+              {user?.email ? (
+                <Link onClick={handleLogout}>Logout</Link>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-14 rounded-full">
-                <img src="https://i.ibb.co/VSHWpW4/mamun.png" alt="" />
+              <div className=" rounded-full ">
+                {user ? (
+                  <>
+                    <img src={user.photoURL} alt="" />
+                  </>
+                ) : (
+                  <img
+                    src="https://i.ibb.co/hCChjP9/User-avatar-svg.png"
+                    alt=""
+                  />
+                )}
               </div>
             </label>
             <ul
@@ -102,16 +110,17 @@ const Navbar = () => {
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link className="justify-between">
+                <Link to="/profile" className="justify-between">
                   Profile
-                  <span className="badge">New</span>
                 </Link>
               </li>
+
               <li>
-                <Link>Settings</Link>
-              </li>
-              <li>
-                <Link>Logout</Link>
+                {user?.email ? (
+                  <Link onClick={handleLogout}>Logout</Link>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
               </li>
             </ul>
           </div>

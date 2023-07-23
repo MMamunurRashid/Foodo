@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUpPage = () => {
   const { googleLogin, createUser, updateUser } = useContext(AuthContext);
@@ -20,13 +20,11 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm();
 
-
   const handleSignup = (data) => {
     // console.log(data);
-
+    const name = data.name;
     const email = data.email;
     const password = data.password;
-    const option = data.option;
 
     setSignupError("");
     createUser(email, password)
@@ -39,7 +37,7 @@ const SignUpPage = () => {
         };
         updateUser(userInfo)
           .then(() => {
-         
+            saveUserInDb(user.displayName, user.email);
             setCreatedUserEmail(email);
             toast.success("Your Registration Successful!!");
           })
@@ -58,8 +56,7 @@ const SignUpPage = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);/
-      
-      
+        saveUserInDb(user.displayName, user.email);
         setCreatedUserEmail(user.email);
         toast.success("Your Registration Successful!!");
       })
@@ -67,6 +64,23 @@ const SignUpPage = () => {
         console.error(err);
         setSignupError(err.message);
         toast.error(`${err.message}`);
+      });
+  };
+
+  // save user to DB
+  const saveUserInDb = (name, email) => {
+    const user = { name, email };
+    fetch(`http://localhost:5000/users`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("save-user", data);
+        //    setCreatedUserEmail(email);
       });
   };
 

@@ -110,8 +110,8 @@ const Navbar = () => {
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/profile" className="justify-between">
-                  Profile
+                <Link to="/dashboard/profile" className="justify-between">
+                  Dashboard
                 </Link>
               </li>
 
@@ -121,6 +121,28 @@ const Navbar = () => {
                 ) : (
                   <Link to="/login">Login</Link>
                 )}
+              </li>
+              <li>
+                <label
+                  htmlFor="dashboard-drawer"
+                  tabIndex={2}
+                  className="btn btn-ghost lg:hidden"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+                    />
+                  </svg>
+                </label>
               </li>
             </ul>
           </div>

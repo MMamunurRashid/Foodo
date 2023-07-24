@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { signIn, googleLogin } = useContext(AuthContext);
@@ -18,9 +19,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const [loginUserEmail, setLoginUserEmail] = useState("");
-
+  const [token] = useToken(loginUserEmail);
   const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
   const handleLogin = (data) => {
     // console.log(data);
     setLoginError("");

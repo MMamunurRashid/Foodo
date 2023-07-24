@@ -33,14 +33,6 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/updatePhoto",
-        element: <UpdatePhoto />,
-      },
     ],
   },
   {
@@ -60,7 +52,14 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-
+      {
+        path: "/dashboard/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/dashboard/updatePhoto",
+        element: <UpdatePhoto />,
+      },
       {
         path: "*",
         element: <NotFound></NotFound>,

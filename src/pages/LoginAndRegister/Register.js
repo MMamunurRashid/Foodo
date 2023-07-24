@@ -6,19 +6,29 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import useToken from "../../hooks/useToken";
 
 const SignUpPage = () => {
   const { googleLogin, createUser, updateUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const [signupError, setSignupError] = useState("");
-  const [createdUserEmail, setCreatedUserEmail] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleSignup = (data) => {
     // console.log(data);

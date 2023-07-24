@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-
+import "../Font/Font.css";
 import { BounceLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -58,42 +58,59 @@ const Profile = () => {
       });
   };
   return (
-    <div className="pt-20">
-      <h1 className="text-5xl">Profile</h1>
-      <p>Name: {user?.displayName}</p>
-      <p>Email: {user?.email}</p>
-      <p>{user?.emailVerified ? "Email Verified" : "Email Not Verified"}</p>
-      {user?.photoURL ? (
-        <>
-          <img src={user?.photoURL} alt="" />
-          <p>
-            want to change your profile picture?{" "}
-            <Link to="/updatePhoto" className="text-red-500">
-              Upload New Photo
-            </Link>
+    <div className="mx-10">
+      <h1 className="text-3xl NotoSerif">My Profile</h1>
+
+      <div className="flex place-items-start ">
+        <div>
+          {user?.photoURL ? (
+            <>
+              <div className="avatar">
+                <div className="w-40 rounded-full">
+                  <img src={user?.photoURL} alt="" />
+                </div>
+              </div>
+
+              <Link
+                to="/dashboard/updatePhoto"
+                className="text-red-500 flex justify-center items-center btn btn-outline"
+              >
+                Upload Photo
+              </Link>
+            </>
+          ) : (
+            <>
+              {/*  User input photo */}
+              <form onSubmit={handleSubmit(handleAddProfilePhoto)}>
+                <input
+                  type="file"
+                  {...register("productPhoto", {
+                    required: "Product Photo is Required",
+                  })}
+                  className="input input-bordered w-full"
+                  required
+                />
+                <input
+                  className="btn btn-accent w-full"
+                  value="Submit"
+                  type="submit"
+                />
+              </form>
+            </>
+          )}
+        </div>
+        <div className=" shadow-xl px-5 py-10 ml-40">
+          <p className="md:text-2xl text-xl  JosefinSans">
+            Name: {user?.displayName}
           </p>
-        </>
-      ) : (
-        <>
-          {/*  User input photo */}
-          <form onSubmit={handleSubmit(handleAddProfilePhoto)}>
-            <input
-              type="file"
-              {...register("productPhoto", {
-                required: "Product Photo is Required",
-              })}
-              className="input input-bordered w-full"
-              required
-            />
-            <input
-              className="btn btn-accent w-full"
-              value="Submit"
-              type="submit"
-            />
-          </form>
-        </>
-      )}
-      <p>Phone Number: {user?.phoneNumber}</p>
+          <p className="md:text-xl text-lg  JosefinSans">
+            Email: {user?.email}
+          </p>
+          <p className="md:text-xl text-lg  JosefinSans">
+            {user?.emailVerified ? "Email Verified" : "Email Not Verified"}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

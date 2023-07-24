@@ -5,44 +5,42 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BounceLoader } from "react-spinners";
+import { useQuery } from "@tanstack/react-query";
 
 const AllUsers = () => {
-  //   const {
-  //     data: users = [],
-  //     refetch,
-  //     isLoading,
-  //   } = useQuery({
-  //     queryKey: ["users"],
-  //     queryFn: async () => {
-  //       const res = await fetch(
-  //         "https://recycle-clothes-server.vercel.app/users",
-  //         {
-  //           headers: {
-  //             authorization: `bearer ${localStorage.getItem("accessToken")}`,
-  //           },
-  //         }
-  //       );
-  //       const data = await res.json();
-  //       return data;
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/users", {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    },
+  });
+  console.log(users);
+  // const handleMakeAdmin = (id) => {
+  //   fetch(`http://localhost:5000/users/admin/${id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
   //     },
-  //   });
-
-  //   const handleMakeAdmin = (id) => {
-  //     fetch(`https://recycle-clothes-server.vercel.app/users/admin/${id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         authorization: `bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         //console.log(data);
-  //         if (data.modifiedCount > 0) {
-  //           toast.success("Make Admin Successful");
-  //           refetch();
-  //         }
-  //       });
-  //   };
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success("Make Admin Successful");
+  //         refetch();
+  //       }
+  //     });
+  // };
 
   // is loading
   const [preloader, setPreLoader] = useState(false);
@@ -52,25 +50,25 @@ const AllUsers = () => {
       setPreLoader(false);
     }, 2000);
   }, []);
-  //   if (isLoading) {
-  //     return (
-  //       <div>
-  //         {preloader ? (
-  //           <div className="flex justify-center items-center w-full h-screen">
-  //             <BounceLoader
-  //               color="#d63636"
-  //               cssOverride={{}}
-  //               loading
-  //               size={150}
-  //               speedMultiplier={1}
-  //             />
-  //           </div>
-  //         ) : (
-  //           <></>
-  //         )}
-  //       </div>
-  //     );
-  //   }
+  if (isLoading) {
+    return (
+      <div>
+        {preloader ? (
+          <div className="flex justify-center items-center w-full h-screen">
+            <BounceLoader
+              color="#d63636"
+              cssOverride={{}}
+              loading
+              size={150}
+              speedMultiplier={1}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className="text-3xl">All Users</h1>
@@ -85,7 +83,7 @@ const AllUsers = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {users.map((user, idx) => (
+          {users.map((user, idx) => (
             <tr key={user._id}>
               <th>{idx + 1}</th>
               <td>{user.name}</td>
@@ -102,7 +100,7 @@ const AllUsers = () => {
                 )}
               </td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

@@ -107,7 +107,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 z-[1] p-2 shadow menu menu-lg dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
                 <Link to="/dashboard/profile" className="justify-between">
@@ -124,7 +124,7 @@ const Navbar = () => {
               </li>
               <li>
                 <label
-                  htmlFor="dashboard-drawer"
+                  htmlFor="my-drawer-2"
                   tabIndex={2}
                   className="btn btn-ghost lg:hidden"
                 >

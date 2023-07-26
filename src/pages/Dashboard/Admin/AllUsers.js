@@ -25,22 +25,41 @@ const AllUsers = () => {
     },
   });
   console.log(users);
-  // const handleMakeAdmin = (id) => {
-  //   fetch(`http://localhost:5000/users/admin/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Make Admin Successful");
-  //         refetch();
-  //       }
-  //     });
-  // };
+
+  //make staff
+  const handleMakeStaff = (_id) => {
+    fetch(`http://localhost:5000/users/staff/${_id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("New Staff added Successfully");
+          refetch();
+        }
+      });
+  };
+  //make admin
+  const handleMakeAdmin = (id) => {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("New Admin added Successfully");
+          refetch();
+        }
+      });
+  };
 
   // is loading
   const [preloader, setPreLoader] = useState(false);
@@ -79,6 +98,7 @@ const AllUsers = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Make Staff</th>
             <th>Make Admin</th>
           </tr>
         </thead>
@@ -90,10 +110,20 @@ const AllUsers = () => {
               <td>{user.email}</td>
               <td>{user?.role ? user.role : user.option}</td>
               <td>
+                {user?.role !== "staff" && (
+                  <button
+                    onClick={() => handleMakeStaff(user._id)}
+                    className="btn btn-primary"
+                  >
+                    Make Staff
+                  </button>
+                )}
+              </td>
+              <td>
                 {user?.role !== "admin" && (
                   <button
-                    // onClick={() => handleMakeAdmin(user._id)}
-                    className="btn btn-xs btn-primary"
+                    onClick={() => handleMakeAdmin(user._id)}
+                    className="btn btn-primary"
                   >
                     Make Admin
                   </button>

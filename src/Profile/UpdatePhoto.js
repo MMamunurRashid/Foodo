@@ -42,7 +42,7 @@ const UpdatePhoto = () => {
               console.error(error);
             });
           toast.success("Your profile picture changed successfully.");
-          navigate("/profile");
+          navigate("/dashboard/profile");
         }
       });
   };
@@ -58,6 +58,9 @@ const UpdatePhoto = () => {
           className="input input-bordered w-2/4"
           required
         />
+        {errors.profilePhoto && (
+          <p className="text-red-500">{errors.profilePhoto.message}</p>
+        )}
 
         <input
           className="btn btn-accent w-2/4 block my-5 justify-center"

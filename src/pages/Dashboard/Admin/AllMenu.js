@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const AllMenu = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/menu`;
+  const url = `https://foodo-server.vercel.app/menu`;
   const {
     data: Items = [],
     refetch,
@@ -29,7 +29,7 @@ const AllMenu = () => {
 
   const handleDelete = (id) => {
     console.log("click", id);
-    fetch(`http://localhost:5000/menu/${id}`, {
+    fetch(`https://foodo-server.vercel.app/menu/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

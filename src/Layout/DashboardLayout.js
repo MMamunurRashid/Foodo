@@ -6,6 +6,7 @@ import useAdmin from "../hooks/isAdmin";
 import Navbar from "../pages/Shared/Navbar";
 import Footer from "../pages/Shared/Footer";
 import useStaff from "../hooks/isStaff";
+import Sidebar from "./SideBar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -17,14 +18,25 @@ const DashboardLayout = () => {
     <div>
       <Navbar></Navbar>
 
-      <div className="drawer  md:drawer-open pt-20 ">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <Outlet></Outlet>
+      <div className="relative grid w-full  sm:pt-24">
+        <input
+          id="dashboard-drawer"
+          type="checkbox"
+          className="drawer-toggle"
+        />
+        <div className="drawer-content  w-full">
+          <div className="flex">
+            <div className="hidden sm:block">
+              <Sidebar />
+            </div>
+            <div className="w-full">
+              <Outlet />
+            </div>
+          </div>
+          {/* <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> */}
         </div>
         <div className="drawer-side ">
-          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-60 mr-5 shadow-xl bg-slate-700  md:text-xl text-lg text-slate-100 h-screen">
+          <ul className="menu p-4 w-60 mr-5 pt-20 sm:pt-4 shadow-xl bg-slate-700  md:text-xl text-lg text-slate-100 h-screen">
             <li className="hover:bg-slate-200 hover:text-black">
               <Link to="/dashboard/profile">My Profile</Link>
             </li>
@@ -47,14 +59,14 @@ const DashboardLayout = () => {
 
             {isStaff && (
               <>
-                <li>
+                <li className="hover:bg-slate-200 hover:text-black">
                   <Link to="/dashboard/all-menu-for-staff">All Menu</Link>
                 </li>
 
-                <li>
-                  <Link to="/dashboard/add-item">Add Item</Link>
+                <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/add-item-for-staff">Add Item</Link>
                 </li>
-                <li>
+                <li className="hover:bg-slate-200 hover:text-black">
                   <Link to="/dashboard/all-orders">All Orders</Link>
                 </li>
               </>

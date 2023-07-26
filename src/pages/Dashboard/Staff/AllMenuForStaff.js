@@ -1,14 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../Context/AuthProvider";
+import { BounceLoader } from "react-spinners";
 
 const AllMenu = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/menu`;
-  const { data: Items = [] } = useQuery({
+  const url = `https://foodo-server.vercel.app/menu`;
+  const {
+    data: Items = [],
+
+    isLoading,
+  } = useQuery({
     queryKey: ["item", user?.email],
     queryFn: async () => {
       const res = await fetch(url, {
@@ -20,6 +25,34 @@ const AllMenu = () => {
       return data;
     },
   });
+
+  // is loading
+  const [preloader, setPreLoader] = useState(false);
+  useEffect(() => {
+    setPreLoader(true);
+    setTimeout(() => {
+      setPreLoader(false);
+    }, 2000);
+  }, []);
+  if (isLoading) {
+    return (
+      <div>
+        {preloader ? (
+          <div className="flex justify-center items-center w-full h-screen">
+            <BounceLoader
+              color="#d63636"
+              cssOverride={{}}
+              loading
+              size={150}
+              speedMultiplier={1}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="">

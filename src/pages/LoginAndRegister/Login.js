@@ -31,11 +31,11 @@ const Login = () => {
   }
   const handleLogin = (data) => {
     // console.log(data);
+    console.log(data.email);
     setLoginError("");
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-
         setLoginUserEmail(data.email);
         toast.success("Login Successful");
         //console.log(user);
@@ -53,8 +53,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
-        const option = "Buyer";
-        saveUserInDb(user.displayName, user.email, option);
+
+        saveUserInDb(user.displayName, user.email);
         setLoginUserEmail(user.email);
         toast.success("Your Registration Successful!!");
       })
@@ -68,7 +68,7 @@ const Login = () => {
   // save data to DB
   const saveUserInDb = (name, email) => {
     const user = { name, email };
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://foodo-server.vercel.app/users`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

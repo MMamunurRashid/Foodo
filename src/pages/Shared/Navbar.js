@@ -93,9 +93,9 @@ const Navbar = () => {
           <div className="dropdown dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className=" rounded-full ">
-                {user ? (
+                {user?.photoURL ? (
                   <>
-                    <img src={user.photoURL} alt="" />
+                    <img src={user?.photoURL} alt="" />
                   </>
                 ) : (
                   <img
@@ -124,7 +124,7 @@ const Navbar = () => {
               </li>
               <li>
                 <label
-                  htmlFor="my-drawer-2"
+                  htmlFor="dashboard-drawer"
                   tabIndex={2}
                   className="btn btn-ghost lg:hidden"
                 >

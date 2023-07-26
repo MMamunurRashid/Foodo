@@ -61,12 +61,12 @@ const Profile = () => {
     <div className="mx-10">
       <h1 className="text-3xl NotoSerif">My Profile</h1>
 
-      <div className="flex place-items-start ">
+      <div className="flex-col sm:flex sm:flex-row place-items-start ">
         <div>
           {user?.photoURL ? (
             <>
               <div className="avatar">
-                <div className="w-40 rounded-full">
+                <div className="w-40 rounded-full ml-10">
                   <img src={user?.photoURL} alt="" />
                 </div>
               </div>
@@ -99,7 +99,7 @@ const Profile = () => {
             </>
           )}
         </div>
-        <div className=" shadow-xl px-5 py-10 ml-40">
+        <div className=" shadow-xl px-5 py-10 ml-5 sm:ml-40">
           <p className="md:text-2xl text-xl  JosefinSans">
             Name: {user?.displayName}
           </p>

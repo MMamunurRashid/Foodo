@@ -15,6 +15,8 @@ import AllStaff from "../pages/Dashboard/Admin/AllStaff";
 import AllAdmin from "../pages/Dashboard/Admin/AllAdmin";
 import AllMenu from "../pages/Dashboard/Admin/AllMenu";
 import AllMenuForStaff from "../pages/Dashboard/Staff/AllMenuForStaff";
+import AddAItemForStaff from "../pages/Dashboard/Staff/AddItemForStaff";
+import AddItem from "../pages/Dashboard/Admin/AddItem";
 
 const router = createBrowserRouter([
   {
@@ -82,10 +84,26 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/add-item-for-admin",
+        element: (
+          <AdminRoute>
+            <AddItem />
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/dashboard/all-menu-for-staff",
         element: (
           <StaffRoute>
             <AllMenuForStaff />
+          </StaffRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-item-for-staff",
+        element: (
+          <StaffRoute>
+            <AddAItemForStaff />
           </StaffRoute>
         ),
       },

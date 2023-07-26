@@ -11,7 +11,7 @@ const AllStaff = () => {
   } = useQuery({
     queryKey: ["staff"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/staff", {
+      const res = await fetch("https://foodo-server.vercel.app/staff", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -24,7 +24,7 @@ const AllStaff = () => {
 
   const handleDelete = (id) => {
     // console.log("click", id);
-    fetch(`http://localhost:5000/staff/${id}`, {
+    fetch(`https://foodo-server.vercel.app/staff/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

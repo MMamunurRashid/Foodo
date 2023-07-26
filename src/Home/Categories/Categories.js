@@ -21,7 +21,7 @@ function Home() {
   }, []);
   return (
     <div className="mt-0 pt-0" id="menu">
-      <div className="text-center" >
+      <div className="text-center">
         <span className=" flex justify-center text-xl md:text-2xl BerkshireSwash ">
           <img
             className="mr-2 w-5 md:w-10"
@@ -68,10 +68,15 @@ function Home() {
                     </button>
                   </Link>
                 </div>
-                <div className="bg-white text-gray-800 py-4 px-6">
-                  <h3 className="text-2xl font-bold font-serif mb-2 text-center">
-                    {item.title}
-                  </h3>
+                <div>
+                  <div className="absolute top-6 text-xl bg-slate-200 p-3">
+                    <p>৳ {item.price}</p>
+                  </div>
+                  <div className="bg-white text-gray-800 py-4 px-6">
+                    <h3 className="text-2xl font-bold font-serif mb-2 text-center">
+                      {item.title}
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>

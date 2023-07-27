@@ -47,7 +47,7 @@ function Menu() {
                 <div />
                 {/* image  hover view button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 bg-opacity-60 hover:opacity-100 transition-opacity duration-300">
-                  <Link to="/login">
+                  <Link to="/order">
                     <button className="bg-slate-300 text-gray-800 font-bold py-2 px-4 rounded shadow">
                       <svg
                         className="w-14 h-14"
@@ -63,7 +63,7 @@ function Menu() {
                           d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
-                      View
+                      order
                     </button>
                   </Link>
                 </div>

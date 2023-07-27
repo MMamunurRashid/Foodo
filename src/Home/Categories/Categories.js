@@ -47,7 +47,7 @@ function Home() {
                 <div />
                 {/* image  hover view button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 bg-opacity-60 hover:opacity-100 transition-opacity duration-300">
-                  <Link to="/login">
+                  <Link to="/order">
                     <button className="bg-slate-300 text-gray-800 font-bold py-2 px-4 rounded shadow">
                       <svg
                         className="w-14 h-14"

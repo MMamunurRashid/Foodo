@@ -1,0 +1,23 @@
+.cart {
+  position: sticky;
+  top: 0;
+  padding: 30px 20px;
+}
+.btn-clear-cart {
+  width: 90%;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  color: whitesmoke;
+  background-color: #ff3030;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+}
+.btn-clear-cart:hover {
+  background-color: #ff9900;
+}

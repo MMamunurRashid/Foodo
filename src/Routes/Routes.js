@@ -19,6 +19,7 @@ import AddAItemForStaff from "../pages/Dashboard/Staff/AddItemForStaff";
 import AddItem from "../pages/Dashboard/Admin/AddItem";
 import Menu from "../pages/Menu/Menu";
 import AboutFoodoPage from "../pages/AboutFoodoPage/AboutFoodoPage";
+import OrderPage from "../pages/Order/OrderPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/about-foodo",
         element: <AboutFoodoPage />,
+      },
+      {
+        path: "/order",
+        element: <OrderPage />,
       },
     ],
   },

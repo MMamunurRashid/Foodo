@@ -12,7 +12,7 @@ function App() {
     setPreLoader(true);
     setTimeout(() => {
       setPreLoader(false);
-    }, 2000);
+    }, 1000);
   }, []);
   return (
     <div className=" max-w-[1440px] mx-auto bg-slate-100 ">
@@ -28,8 +28,8 @@ function App() {
         </div>
       ) : (
         <RouterProvider router={router}></RouterProvider>
-        
-      )}<Toaster />
+      )}
+      <Toaster />
     </div>
   );
 }

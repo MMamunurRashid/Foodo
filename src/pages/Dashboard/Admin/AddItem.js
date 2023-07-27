@@ -71,7 +71,7 @@ const AddItem = () => {
             price: data.price,
           };
           // save  information to the database
-          fetch("https://foodo-server.vercel.app/menu/admin", {
+          fetch("http://localhost:5000/menu/admin", {
             method: "POST",
             headers: {
               "content-type": "application/json",

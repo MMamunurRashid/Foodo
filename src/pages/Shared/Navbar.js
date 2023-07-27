@@ -13,7 +13,7 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
   return (
-    <div className="fixed  shadow-md max-w-[1440px] bg-slate-200 w-full z-50  py-2  md:flex md:justify-between md:items-center md:px-20 px-5">
+    <div className="fixed  shadow-md max-w-[1440px] bg-slate-200 w-full z-50    md:flex md:justify-between md:items-center md:px-20 px-5">
       <div className="navbar  bg-slate-200">
         <div className="navbar-start">
           <div className="dropdown">
@@ -35,17 +35,17 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content dropdown mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl NotoSerif"
+              className="menu menu-sm dropdown-content dropdown mt-3 z-[1]  shadow bg-base-100 rounded-box w-52 text-xl NotoSerif"
             >
               <li>
                 <a href="/home">Home</a>
               </li>
 
               <li>
-                <a href="#menu">Menu</a>
+                <a href="/menu">Menu</a>
               </li>
               <li>
-                <a href="#about">About Us</a>
+                <a href="/about-foodo">About Us</a>
               </li>
               <li>
                 {user?.email ? (
@@ -70,15 +70,15 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu  menu-horizontal px-1 text-2xl NotoSerif">
+          <ul className="menu  menu-horizontal px-1 text-xl NotoSerif">
             <li>
               <a href="/home">Home</a>
             </li>
             <li>
-              <a href="#menu">Menu</a>
+              <a href="/menu">Menu</a>
             </li>
             <li>
-              <a href="#about">About Us</a>
+              <a href="/about-foodo">About Us</a>
             </li>
             <li>
               {user?.email ? (

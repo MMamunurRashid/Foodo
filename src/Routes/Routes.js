@@ -17,6 +17,8 @@ import AllMenu from "../pages/Dashboard/Admin/AllMenu";
 import AllMenuForStaff from "../pages/Dashboard/Staff/AllMenuForStaff";
 import AddAItemForStaff from "../pages/Dashboard/Staff/AddItemForStaff";
 import AddItem from "../pages/Dashboard/Admin/AddItem";
+import Menu from "../pages/Menu/Menu";
+import AboutFoodoPage from "../pages/AboutFoodoPage/AboutFoodoPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/menu",
+        element: <Menu />,
+      },
+      {
+        path: "/about-foodo",
+        element: <AboutFoodoPage />,
       },
     ],
   },

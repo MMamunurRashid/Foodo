@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Menu() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch your local data here
-        const response = await fetch("http://localhost:5000/menu/limit");
+        const response = await fetch("http://localhost:5000/menu");
         const jsonData = await response.json();
         // console.log(jsonData);
         setData(jsonData);
@@ -19,7 +19,7 @@ function Home() {
     fetchData();
   }, []);
   return (
-    <div className="mt-0 pt-5 " id="menu">
+    <div className="mt-0 pt-28 mb-5" id="menu">
       <div className="text-center">
         <span className=" flex justify-center text-xl md:text-2xl BerkshireSwash ">
           <img
@@ -38,12 +38,12 @@ function Home() {
           Find your desire meal from our Food Items
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-7 max-w-[1440px] my-7 mx-5 md:mx-48 justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-7 max-w-[1440px] my-7 mx-5 md:mx-20 justify-items-center">
         {data?.map((item) => (
           <div key={item.item} className="card w-full  shadow-xl ">
             <div className="relative">
               <div className="">
-                <img src={item.img} alt={""} className="w-full h-64" />
+                <img src={item.img} alt={""} className="w-full h-60" />
                 <div />
                 {/* image  hover view button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 bg-opacity-60 hover:opacity-100 transition-opacity duration-300">
@@ -82,13 +82,8 @@ function Home() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center">
-        <div>
-          <Link className="btn btn-secondary px-16">More Menu</Link>
-        </div>
-      </div>
     </div>
   );
 }
 
-export default Home;
+export default Menu;

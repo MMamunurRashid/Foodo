@@ -8,7 +8,7 @@ import { BounceLoader } from "react-spinners";
 const AllMenu = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `https://foodo-server.vercel.app/menu`;
+  const url = `http://localhost:5000/menu`;
   const {
     data: Items = [],
 

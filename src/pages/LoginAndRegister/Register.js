@@ -80,7 +80,7 @@ const SignUpPage = () => {
   // save user to DB
   const saveUserInDb = (name, email) => {
     const user = { name, email };
-    fetch(`https://foodo-server.vercel.app/users`, {
+    fetch(`http://localhost:5000/users`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

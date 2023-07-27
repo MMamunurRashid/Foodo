@@ -25,8 +25,8 @@ const Home = () => {
         <HomeSlide2 />
         <HomeFoodCarousel />
         <AboutFoodo />
-        <PhotoGallary />
         <Categories />
+        <PhotoGallary />
         <Chef />
       </div>
     </div>

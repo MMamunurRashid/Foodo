@@ -84,7 +84,9 @@ function Home() {
       </div>
       <div className="flex justify-center">
         <div>
-          <Link className="btn btn-secondary px-16">More Menu</Link>
+          <Link to="/menu" className="btn btn-secondary px-16">
+            More Menu
+          </Link>
         </div>
       </div>
     </div>

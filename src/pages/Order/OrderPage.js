@@ -23,8 +23,6 @@ const OrderPage = () => {
 
   const [cart, setCart] = useState([]);
   const handleAddToCart = (selectedItem) => {
-    // const newCart = [selectedItem];
-
     if (cart) {
       const newCart = [...cart, selectedItem];
       setCart(newCart);

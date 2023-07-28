@@ -38,14 +38,17 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content dropdown mt-3 z-[1]  shadow bg-base-100 rounded-box w-52 text-xl NotoSerif"
             >
               <li>
-                <a href="/home">Home</a>
+                <Link to="/home">Home</Link>
               </li>
 
               <li>
-                <a href="/menu">Menu</a>
+                <Link to="/menu">Menu</Link>
               </li>
               <li>
-                <a href="/about-foodo">About Us</a>
+                <Link to="/about-foodo">About Us</Link>
+              </li>
+              <li>
+                <Link to="/table-reservation">Table Reservation</Link>
               </li>
               <li>
                 {user?.email ? (
@@ -61,24 +64,27 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center">
-            <a
-              href="/home"
+            <Link
+              to="/home"
               className="btn btn-ghost normal-case text-5xl BerkshireSwash font-bold"
             >
               Foodo
-            </a>
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu  menu-horizontal px-1 text-xl NotoSerif">
             <li>
-              <a href="/home">Home</a>
+              <Link to="/home">Home</Link>
             </li>
             <li>
-              <a href="/menu">Menu</a>
+              <Link to="/menu">Menu</Link>
             </li>
             <li>
-              <a href="/about-foodo">About Us</a>
+              <Link to="/about-foodo">About Us</Link>
+            </li>
+            <li>
+              <Link to="/table-reservation">Table Reservation</Link>
             </li>
             <li>
               {user?.email ? (

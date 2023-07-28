@@ -15,6 +15,9 @@ const SideBar = () => {
         <li className="hover:bg-slate-200 hover:text-black">
           <Link to="/dashboard/profile">My Profile</Link>
         </li>
+        <li className="hover:bg-slate-200 hover:text-black">
+          <Link to="/dashboard/my-orders">My Orders</Link>
+        </li>
         {isAdmin && (
           <>
             <li className="hover:bg-slate-200 hover:text-black">
@@ -30,12 +33,18 @@ const SideBar = () => {
               <Link to="/dashboard/all-menu">All Menu</Link>
             </li>
             <li className="hover:bg-slate-200 hover:text-black">
-              <Link to="/dashboard/add-item-for-admin">Add Item</Link>
+              <Link to="/dashboard/all-orders">All Orders</Link>
+            </li>
+            <li className="hover:bg-slate-200 hover:text-black">
+              <Link to="/dashboard/add-item">Add Item</Link>
             </li>
           </>
         )}
         {isStaff && (
           <>
+            <li className="hover:bg-slate-200 hover:text-black">
+              <Link to="/dashboard/my-orders">My Orders</Link>
+            </li>
             <li className="hover:bg-slate-200 hover:text-black">
               <Link to="/dashboard/all-menu-for-staff">All Menu</Link>
             </li>
@@ -44,7 +53,7 @@ const SideBar = () => {
               <Link to="/dashboard/add-item-for-staff">Add Item</Link>
             </li>
             <li className="hover:bg-slate-200 hover:text-black">
-              <Link to="/dashboard/all-orders">All Orders</Link>
+              <Link to="/dashboard/all-orders-for-staff">All Orders</Link>
             </li>
           </>
         )}

@@ -20,6 +20,9 @@ import AddItem from "../pages/Dashboard/Admin/AddItem";
 import Menu from "../pages/Menu/Menu";
 import AboutFoodoPage from "../pages/AboutFoodoPage/AboutFoodoPage";
 import OrderPage from "../pages/Order/OrderPage";
+import AllOrders from "../pages/Dashboard/Admin/AllOrders";
+import AllOrdersForStaff from "../pages/Dashboard/Staff/AllOrdersForStaff";
+import UserOrder from "../pages/Dashboard/User/UserOrder";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/order",
-        element: <OrderPage />,
+        element: (
+          <PrivateRoute>
+            <OrderPage />,
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -99,10 +106,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/add-item-for-admin",
+        path: "/dashboard/add-item",
         element: (
           <AdminRoute>
             <AddItem />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-orders",
+        element: (
+          <AdminRoute>
+            <AllOrders />
           </AdminRoute>
         ),
       },
@@ -121,6 +136,18 @@ const router = createBrowserRouter([
             <AddAItemForStaff />
           </StaffRoute>
         ),
+      },
+      {
+        path: "/dashboard/all-orders-for-staff",
+        element: (
+          <StaffRoute>
+            <AllOrdersForStaff />
+          </StaffRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-orders",
+        element: <UserOrder />,
       },
       {
         path: "/dashboard/profile",

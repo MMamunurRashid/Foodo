@@ -40,14 +40,19 @@ const DashboardLayout = () => {
             <li className="hover:bg-slate-200 hover:text-black">
               <Link to="/dashboard/profile">My Profile</Link>
             </li>
-            <li className="hover:bg-slate-200 hover:text-black">
-              <Link to="/dashboard/my-orders">My Orders</Link>
-            </li>
-            <li className="hover:bg-slate-200 hover:text-black">
-              <Link to="/dashboard/my-table-reservation">
-                My Table Reservation
-              </Link>
-            </li>
+
+            {!isAdmin && !isStaff && (
+              <>
+                <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/my-orders">My Orders</Link>
+                </li>
+                <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/my-table-reservation">
+                    My Table Reservation
+                  </Link>
+                </li>
+              </>
+            )}
             {isAdmin && (
               <>
                 <li className="hover:bg-slate-200 hover:text-black">
@@ -66,6 +71,11 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/all-orders">All Orders</Link>
                 </li>
                 <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/all-table-reservation">
+                    All Table Reservation
+                  </Link>
+                </li>
+                <li className="hover:bg-slate-200 hover:text-black">
                   <Link to="/dashboard/add-item">Add Item</Link>
                 </li>
               </>
@@ -77,14 +87,21 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/my-orders">My Orders</Link>
                 </li>
                 <li className="hover:bg-slate-200 hover:text-black">
-                  <Link to="/dashboard/all-menu-for-staff">All Menu</Link>
+                  <Link to="/dashboard/my-orders">My Orders</Link>
                 </li>
-
                 <li className="hover:bg-slate-200 hover:text-black">
-                  <Link to="/dashboard/add-item-for-staff">Add Item</Link>
+                  <Link to="/dashboard/all-menu-for-staff">All Menu</Link>
                 </li>
                 <li className="hover:bg-slate-200 hover:text-black">
                   <Link to="/dashboard/all-orders-for-staff">All Orders</Link>
+                </li>
+                <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/all-table-reservation-for-staff">
+                    All Table Reservation
+                  </Link>
+                </li>
+                <li className="hover:bg-slate-200 hover:text-black">
+                  <Link to="/dashboard/add-item">Add Item</Link>
                 </li>
               </>
             )}

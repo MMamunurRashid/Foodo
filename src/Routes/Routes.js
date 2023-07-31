@@ -22,6 +22,8 @@ import AboutFoodoPage from "../pages/AboutFoodoPage/AboutFoodoPage";
 import OrderPage from "../pages/Order/OrderPage";
 import AllOrders from "../pages/Dashboard/Admin/AllOrders";
 import AllOrdersForStaff from "../pages/Dashboard/Staff/AllOrdersForStaff";
+import AllTableReservationForStaff from "../pages/Dashboard/Staff/AllTableReservationForStaff";
+import AllTableReservation from "../pages/Dashboard/Admin/AllTableReservation";
 import UserOrder from "../pages/Dashboard/User/UserOrder";
 import TableReservation from "../pages/TableReservation/TableReservation";
 import MyTableReservation from "../pages/Dashboard/User/MyTableReservation";
@@ -129,6 +131,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/all-table-reservation",
+        element: (
+          <AdminRoute>
+            <AllTableReservation />
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/dashboard/all-menu-for-staff",
         element: (
           <StaffRoute>
@@ -149,6 +159,14 @@ const router = createBrowserRouter([
         element: (
           <StaffRoute>
             <AllOrdersForStaff />
+          </StaffRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-table-reservation-for-staff",
+        element: (
+          <StaffRoute>
+            <AllTableReservationForStaff />
           </StaffRoute>
         ),
       },

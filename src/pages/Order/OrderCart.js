@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const OrderCart = ({ cart, setCart }) => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,7 +39,7 @@ const OrderCart = ({ cart, setCart }) => {
   //handle order
   const handleOrder = (data) => {
     const orderDetails = {
-      bookingDate: new Date(),
+      orderDate: new Date(),
       items: titlesArray,
       price: totalPrice,
       tax: tax,
@@ -65,6 +67,7 @@ const OrderCart = ({ cart, setCart }) => {
           toast.success(
             "You Order is confirmed!! your food is going to delivery"
           );
+          navigate("/dashboard/my-orders");
         } else {
           toast.error(data.message);
         }

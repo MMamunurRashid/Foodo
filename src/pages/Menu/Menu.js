@@ -1,23 +1,38 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BounceLoader } from "react-spinners";
 
 function Menu() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch your local data here
-        const response = await fetch("http://localhost:5000/menu");
-        const jsonData = await response.json();
-        // console.log(jsonData);
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  const {
+    data: datas = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/menu`);
+      const data = await res.json();
+      // console.log(data);
+      return data;
+    },
+  });
 
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return (
+      <div>
+        <div className="flex justify-center items-center w-full h-screen">
+          <BounceLoader
+            color="#d63636"
+            cssOverride={{}}
+            loading
+            size={150}
+            speedMultiplier={1}
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="mt-0 pt-28 mb-5" id="menu">
       <div className="text-center">
@@ -39,7 +54,7 @@ function Menu() {
         </h1>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-7 max-w-[1440px] my-7 mx-5 md:mx-20 justify-items-center">
-        {data?.map((item) => (
+        {datas?.map((item) => (
           <div key={item.item} className="card w-full  shadow-xl ">
             <div className="relative">
               <div className="">

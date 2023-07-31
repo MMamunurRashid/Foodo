@@ -27,29 +27,19 @@ const AllMenu = () => {
   });
 
   // is loading
-  const [preloader, setPreLoader] = useState(false);
-  useEffect(() => {
-    setPreLoader(true);
-    setTimeout(() => {
-      setPreLoader(false);
-    }, 2000);
-  }, []);
+
   if (isLoading) {
     return (
       <div>
-        {preloader ? (
-          <div className="flex justify-center items-center w-full h-screen">
-            <BounceLoader
-              color="#d63636"
-              cssOverride={{}}
-              loading
-              size={150}
-              speedMultiplier={1}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="flex justify-center items-center w-full h-screen">
+          <BounceLoader
+            color="#d63636"
+            cssOverride={{}}
+            loading
+            size={150}
+            speedMultiplier={1}
+          />
+        </div>
       </div>
     );
   }

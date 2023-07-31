@@ -9,17 +9,11 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
 
-  const [preloader, setPreLoader] = useState(false);
-  useEffect(() => {
-    setPreLoader(true);
-    setTimeout(() => {
-      setPreLoader(false);
-    }, 2000);
-  }, []);
+
   if (loading) {
     return (
       <div>
-        {preloader ? (
+
           <div className="flex justify-center items-center w-full h-screen">
             <BounceLoader
               color="#d63636"
@@ -29,9 +23,7 @@ const PrivateRoute = ({ children }) => {
               speedMultiplier={1}
             />
           </div>
-        ) : (
-          <></>
-        )}
+
       </div>
     );
   }

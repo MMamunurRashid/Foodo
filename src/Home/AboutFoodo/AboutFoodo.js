@@ -100,7 +100,7 @@ const AboutFoodo = () => {
           <h1 className="text-2xl text-center font-serif font-bold">
             How Foodo Food Delivery Service work
           </h1>
-          <div className="flex flex-col  md:flex-row  justify-between items-center mx-10 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5  justify-between items-center mx-10 text-center">
             <div className="flex flex-col items-center shadow-lg p-7 rounded-lg transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-110  duration-500  transition-transform">
               <img
                 className="w-40 "

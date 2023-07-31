@@ -9,29 +9,18 @@ const SellerRoute = ({ children }) => {
   const [isStaff, isStaffLoading] = useStaff(user?.email);
   const location = useLocation();
 
-  const [preloader, setPreLoader] = useState(false);
-  useEffect(() => {
-    setPreLoader(true);
-    setTimeout(() => {
-      setPreLoader(false);
-    }, 2000);
-  }, []);
   if (loading || isStaffLoading) {
     return (
       <div>
-        {preloader ? (
-          <div className="flex justify-center items-center w-full h-screen">
-            <BounceLoader
-              color="#d63636"
-              cssOverride={{}}
-              loading
-              size={150}
-              speedMultiplier={1}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="flex justify-center items-center w-full h-screen">
+          <BounceLoader
+            color="#d63636"
+            cssOverride={{}}
+            loading
+            size={150}
+            speedMultiplier={1}
+          />
+        </div>
       </div>
     );
   }

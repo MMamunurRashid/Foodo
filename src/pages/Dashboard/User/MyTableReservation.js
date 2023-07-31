@@ -15,7 +15,7 @@ const UserOrder = () => {
     queryKey: ["orders"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/my-order?email=${user.email}`,
+        `http://localhost:5000/my-table-reservation?email=${user.email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -54,31 +54,21 @@ const UserOrder = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Oder Email</th>
-              <th> Order Date</th>
-              <th> Total Price</th>
-              <th>Serve Status</th>
-              <th>Payment Status</th>
+              <th>Email</th>
+              <th>Reserve Date</th>
+              <th>Time</th>
+              <th>Table Number</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order, idx) => (
               <tr key={order._id}>
                 <th>{idx + 1}</th>
-                <td>{order.items}</td>
-                <td>{order.orderEmail}</td>
-                <td>{order.orderDate.slice(0, 10)}</td>
-                <td>{order.totalPrice}</td>
-                {order?.serveStatus !== "served" ? (
-                  <td>Not Serve yet</td>
-                ) : (
-                  <td>Served</td>
-                )}
-                {order?.payStatus !== "paid" ? (
-                  <td>Not Pay yet</td>
-                ) : (
-                  <td>Paid</td>
-                )}
+                <td>{order.name}</td>
+                <td>{order.email}</td>
+                <td>{order.reservationDate}</td>
+                <td>{order.time}</td>
+                <td>{order.tableNumber}</td>
               </tr>
             ))}
           </tbody>

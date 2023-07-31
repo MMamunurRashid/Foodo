@@ -23,6 +23,8 @@ import OrderPage from "../pages/Order/OrderPage";
 import AllOrders from "../pages/Dashboard/Admin/AllOrders";
 import AllOrdersForStaff from "../pages/Dashboard/Staff/AllOrdersForStaff";
 import UserOrder from "../pages/Dashboard/User/UserOrder";
+import TableReservation from "../pages/TableReservation/TableReservation";
+import MyTableReservation from "../pages/Dashboard/User/MyTableReservation";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,11 @@ const router = createBrowserRouter([
         path: "/about-foodo",
         element: <AboutFoodoPage />,
       },
+      {
+        path: "/table-reservation",
+        element: <TableReservation />,
+      },
+
       {
         path: "/order",
         element: (
@@ -148,6 +155,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-orders",
         element: <UserOrder />,
+      },
+      {
+        path: "/dashboard/my-table-reservation",
+        element: <MyTableReservation />,
       },
       {
         path: "/dashboard/profile",

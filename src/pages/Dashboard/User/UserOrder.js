@@ -62,7 +62,7 @@ const UserOrder = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, idx) => (
+            {orders?.map((order, idx) => (
               <tr key={order._id}>
                 <th>{idx + 1}</th>
                 <td>{order.items}</td>
@@ -75,7 +75,9 @@ const UserOrder = () => {
                   <td>Served</td>
                 )}
                 {order?.payStatus !== "paid" ? (
-                  <td>Not Pay yet</td>
+                  <td>
+                    Not Pay yet
+                  </td>
                 ) : (
                   <td>Paid</td>
                 )}

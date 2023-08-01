@@ -28,6 +28,8 @@ import UserOrder from "../pages/Dashboard/User/UserOrder";
 import TableReservation from "../pages/TableReservation/TableReservation";
 import MyTableReservation from "../pages/Dashboard/User/MyTableReservation";
 
+import TotalSell from "../pages/Dashboard/Admin/TotalSell";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -139,6 +141,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/total-sell",
+        element: (
+          <AdminRoute>
+            <TotalSell />
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/dashboard/all-menu-for-staff",
         element: (
           <StaffRoute>
@@ -174,6 +184,7 @@ const router = createBrowserRouter([
         path: "/dashboard/my-orders",
         element: <UserOrder />,
       },
+
       {
         path: "/dashboard/my-table-reservation",
         element: <MyTableReservation />,

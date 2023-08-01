@@ -78,6 +78,9 @@ const DashboardLayout = () => {
                 <li className="hover:bg-slate-200 hover:text-black">
                   <Link to="/dashboard/add-item">Add Item</Link>
                 </li>
+                 <li className="hover:bg-slate-200 hover:text-black">
+              <Link to="/dashboard/total-sell">Total Sell</Link>
+            </li>
               </>
             )}
 

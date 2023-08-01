@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const OrderCart = ({ cart, setCart }) => {
   const { user } = useContext(AuthContext);
@@ -51,7 +51,7 @@ const OrderCart = ({ cart, setCart }) => {
       phoneNumber: data.mobileNumber,
       location: data.location,
     };
-    console.log(orderDetails);
+    // console.log(orderDetails);
 
     fetch("http://localhost:5000/orders", {
       method: "POST",
@@ -73,6 +73,39 @@ const OrderCart = ({ cart, setCart }) => {
         }
       });
   };
+
+  // submit with payment 
+  const submitWithPayment = (data) => {
+    const orderDetails = {
+      orderDate: new Date(),
+      items: titlesArray,
+      price: totalPrice,
+      tax: tax,
+      delivery: delivery,
+      totalPrice: grandTotal,
+      userName: user.displayName,
+      userEmail: user.email,
+      orderEmail: data.email,
+      phoneNumber: data.mobileNumber,
+      location: data.location,
+
+    };
+    console.log(orderDetails);
+
+
+    fetch("http://localhost:5000/orders-payment", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orderDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.replace(data.url);
+      })
+      .catch((er) => console.error(er));
+  }
 
   return (
     <div className="cart bg-slate-500 w-5/12 text-white ">
@@ -126,7 +159,7 @@ const OrderCart = ({ cart, setCart }) => {
             <div className="form-control   w-full">
               <form onSubmit={handleSubmit(handleOrder)}>
                 <div className="form-control items-center">
-                  <input
+                  <textarea
                     type="text"
                     placeholder="Enter your Location"
                     {...register("location", { required: true, maxLength: 80 })}
@@ -167,15 +200,24 @@ const OrderCart = ({ cart, setCart }) => {
                 <div className="form-control items-center">
                   <input
                     className="btn btn-accent  w-3/4 mt-3"
-                    value="Proceed to complete order"
+                    value="Cash On Delivery"
                     type="submit"
                   />
                 </div>
               </form>
             </div>
           </div>
+          <div className="text-center mt-10">
+            <h1 className="text-xl">Do you want to complete your payment?</h1>
+            <button type="button" className="btn btn-primary  w-3/4 mt-3" onClick={handleSubmit(submitWithPayment)}>
+              Submit With Payment
+            </button>
+          </div>
         </div>
+
       )}
+
+
     </div>
   );
 };

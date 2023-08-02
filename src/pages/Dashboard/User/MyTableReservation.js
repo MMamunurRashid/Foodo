@@ -17,7 +17,7 @@ const UserOrder = () => {
     queryKey: ["orders"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/my-table-reservation?email=${user.email}`,
+        `https://foodo-server.vercel.app/my-table-reservation?email=${user.email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,

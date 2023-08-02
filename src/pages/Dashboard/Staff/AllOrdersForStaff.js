@@ -14,7 +14,7 @@ const AllOrdersForStaff = () => {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/orders-for-staff", {
+      const res = await fetch("https://foodo-server.vercel.app/orders-for-staff", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -27,7 +27,7 @@ const AllOrdersForStaff = () => {
 
   // make paid of order
   const handlePaid = (id) => {
-    fetch(`http://localhost:5000/paid/${id}`, {
+    fetch(`https://foodo-server.vercel.app/paid/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -59,7 +59,7 @@ const AllOrdersForStaff = () => {
   };
   // make serve of order
   const handleServe = (id) => {
-    fetch(`http://localhost:5000/serve/${id}`, {
+    fetch(`https://foodo-server.vercel.app/serve/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

@@ -17,7 +17,7 @@ const AllUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users", {
+      const res = await fetch("https://foodo-server.vercel.app/users", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -30,7 +30,7 @@ const AllUsers = () => {
 
   //make staff
   const handleMakeStaff = (_id) => {
-    fetch(`http://localhost:5000/users/staff/${_id}`, {
+    fetch(`https://foodo-server.vercel.app/users/staff/${_id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -47,7 +47,7 @@ const AllUsers = () => {
   };
   //make admin
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://foodo-server.vercel.app/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

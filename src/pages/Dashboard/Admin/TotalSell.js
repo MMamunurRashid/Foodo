@@ -19,7 +19,7 @@ const TotalSell = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/total-sell?option=${selectedValue}`, {
+            `https://foodo-server.vercel.app/total-sell?option=${selectedValue}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
             },

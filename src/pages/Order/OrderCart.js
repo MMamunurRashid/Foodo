@@ -53,7 +53,7 @@ const OrderCart = ({ cart, setCart }) => {
     };
     // console.log(orderDetails);
 
-    fetch("http://localhost:5000/orders", {
+    fetch("https://foodo-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -93,7 +93,7 @@ const OrderCart = ({ cart, setCart }) => {
     console.log(orderDetails);
 
 
-    fetch("http://localhost:5000/orders-payment", {
+    fetch("https://foodo-server.vercel.app/orders-payment", {
       method: "POST",
       headers: {
         "content-type": "application/json",

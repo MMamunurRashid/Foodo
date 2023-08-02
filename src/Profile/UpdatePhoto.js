@@ -20,9 +20,9 @@ const UpdatePhoto = () => {
   // Upload Image
   const imgbbKey = "035fa433d4769de53906a7872698cbac";
   const handleAddProfile = (data) => {
-    const profilePhoto = data.productPhoto[0];
+    const profilePhoto = data.profilePhoto[0];
 
-    // console.log(productPhoto);
+    // console.log(profilePhoto);
     const formData = new FormData();
     formData.append("image", profilePhoto);
     const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;

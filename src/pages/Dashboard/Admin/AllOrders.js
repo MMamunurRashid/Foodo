@@ -13,7 +13,7 @@ const AllOrders = () => {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/orders", {
+      const res = await fetch("https://foodo-server.vercel.app/orders", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },

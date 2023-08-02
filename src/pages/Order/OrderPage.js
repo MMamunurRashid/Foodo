@@ -3,15 +3,19 @@ import "../../Font/Font.css";
 import { BsPlusCircle } from "react-icons/bs";
 import OrderCart from "./OrderCart";
 import useTitle from "../../hooks/useTitle";
+import { useNavigation } from "react-router-dom";
+import { BounceLoader } from "react-spinners";
+
 
 const OrderPage = () => {
   useTitle("Order");
   const [items, setItems] = useState([]);
+  const navigation = useNavigation();
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch your local data here
-        const response = await fetch("http://localhost:5000/menu");
+        const response = await fetch("https://foodo-server.vercel.app/menu");
         const jsonData = await response.json();
         // console.log(jsonData);
         setItems(jsonData);
@@ -31,6 +35,23 @@ const OrderPage = () => {
     }
   };
 
+  // is loading
+
+  if (navigation.state === "loading") {
+    return (
+      <div>
+        <div className="flex justify-center items-center w-full h-screen">
+          <BounceLoader
+            color="#d63636"
+            cssOverride={{}}
+            loading
+            size={150}
+            speedMultiplier={1}
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="pt-20">
       <h1 className="text-center BerkshireSwash sm:text-4xl ">Order</h1>

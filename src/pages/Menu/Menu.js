@@ -13,7 +13,7 @@ function Menu() {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/menu`);
+      const res = await fetch(`https://foodo-server.vercel.app/menu`);
       const data = await res.json();
       // console.log(data);
       return data;

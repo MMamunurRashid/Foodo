@@ -5,9 +5,11 @@ import { AuthContext } from "../../Context/AuthProvider";
 import DatePicker from "./DatePicker";
 import { toast } from "react-hot-toast";
 import useTitle from "../../hooks/useTitle";
+import { useNavigate } from "react-router-dom";
 
 const TableReservation = () => {
   useTitle("Table Reservation");
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const {
     register,
@@ -28,7 +30,7 @@ const TableReservation = () => {
     };
     console.log(tableReservation);
     // save  information to the database
-    fetch("http://localhost:5000/table-reservation", {
+    fetch("https://foodo-server.vercel.app/table-reservation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,7 +43,7 @@ const TableReservation = () => {
         toast.success(
           `Your Table Reservation successfully !!! Please come on time`
         );
-        // navigate("/dashboard/my-table-reservation");
+        navigate("/dashboard/my-table-reservation");
       });
   };
 

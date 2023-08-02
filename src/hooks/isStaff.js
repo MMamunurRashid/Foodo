@@ -5,7 +5,7 @@ const useStaff = (email) => {
   const [isStaffLoading, setIsStaffLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/staff/${email}`)
+      fetch(`https://foodo-server.vercel.app/users/staff/${email}`)
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);

@@ -63,7 +63,7 @@ const AddAItemForStaff = () => {
             price: data.price,
           };
           // save  information to the database
-          fetch("http://localhost:5000/menu/staff", {
+          fetch("https://foodo-server.vercel.app/menu/staff", {
             method: "POST",
             headers: {
               "content-type": "application/json",

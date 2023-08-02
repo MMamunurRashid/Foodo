@@ -7,7 +7,7 @@ function Home() {
     const fetchData = async () => {
       try {
         // Fetch your local data here
-        const response = await fetch("http://localhost:5000/menu/limit");
+        const response = await fetch("https://foodo-server.vercel.app/menu/limit");
         const jsonData = await response.json();
         // console.log(jsonData);
         setData(jsonData);

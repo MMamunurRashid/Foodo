@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { BounceLoader } from "react-spinners";
 
 import { AuthContext } from "../../../Context/AuthProvider";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ const AllMenu = () => {
   useTitle("All Menu");
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/menu`;
+  const url = `https://foodo-server.vercel.app/menu`;
   const {
     data: Items = [],
     refetch,
@@ -31,7 +32,7 @@ const AllMenu = () => {
 
   const handleDelete = (id) => {
     console.log("click", id);
-    fetch(`http://localhost:5000/menu/${id}`, {
+    fetch(`https://foodo-server.vercel.app/menu/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -45,6 +46,23 @@ const AllMenu = () => {
         }
       });
   };
+
+  // is loading
+  if (isLoading) {
+    return (
+      <div>
+        <div className="flex justify-center items-center w-full h-screen">
+          <BounceLoader
+            color="#d63636"
+            cssOverride={{}}
+            loading
+            size={150}
+            speedMultiplier={1}
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="">
       <h1 className="text-3xl mb-3">Our Menu Items</h1>

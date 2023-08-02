@@ -10,7 +10,7 @@ const AllMenu = () => {
   useTitle("All Menu");
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/menu`;
+  const url = `https://foodo-server.vercel.app/menu`;
   const {
     data: Items = [],
 

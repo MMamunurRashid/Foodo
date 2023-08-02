@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
+import useTitle from "../../hooks/useTitle";
 
 function Menu() {
+  useTitle("Menu");
   const {
     data: datas = [],
     refetch,

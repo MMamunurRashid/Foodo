@@ -4,8 +4,10 @@ import { useContext } from "react";
 
 import { BounceLoader } from "react-spinners";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 
 const UserOrder = () => {
+  useTitle("My Table Reservation");
   const { user } = useContext(AuthContext);
   const {
     data: orders = [],

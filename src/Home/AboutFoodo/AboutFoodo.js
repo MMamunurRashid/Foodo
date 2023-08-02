@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AboutFoodo = () => {
+  useTitle("About");
   return (
     <div>
       <div className="  flex-row md:flex mx-5">

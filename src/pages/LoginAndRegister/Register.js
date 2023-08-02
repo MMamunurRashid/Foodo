@@ -9,8 +9,10 @@ import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useToken from "../../hooks/useToken";
+import useTitle from "../../hooks/useTitle";
 
 const SignUpPage = () => {
+  useTitle("Register");
   const { googleLogin, createUser, updateUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const [signupError, setSignupError] = useState("");

@@ -6,8 +6,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { BounceLoader } from "react-spinners";
 import { useQuery } from "@tanstack/react-query";
+import useTitle from "../../../hooks/useTitle";
 
 const AllUsers = () => {
+  useTitle("All Users");
   const {
     data: users = [],
     refetch,

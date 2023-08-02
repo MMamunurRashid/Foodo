@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BounceLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 const AllAdmin = () => {
+  useTitle("All Admin");
   const {
     data: admin = [],
     refetch,

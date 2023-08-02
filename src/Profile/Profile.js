@@ -4,12 +4,15 @@ import { AuthContext } from "../Context/AuthProvider";
 import "../Font/Font.css";
 import { BounceLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import useTitle from "../hooks/useTitle";
 
 const Profile = () => {
+  useTitle("My-Profile");
   const { user, loading, updateUserProfile } = useContext(AuthContext);
-  console.log(user);
-
+  // console.log(user);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -50,10 +53,12 @@ const Profile = () => {
             photoURL: imgData.data.url,
           };
           updateUserProfile(profilePhoto)
-            .then(() => {})
+            .then(() => { })
             .catch((error) => {
               console.error(error);
             });
+          toast.success("Your profile picture changed successfully.");
+          navigate("/dashboard/profile");
         }
       });
   };

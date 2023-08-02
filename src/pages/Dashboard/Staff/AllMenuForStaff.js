@@ -4,8 +4,10 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../Context/AuthProvider";
 import { BounceLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 const AllMenu = () => {
+  useTitle("All Menu");
   const { user } = useContext(AuthContext);
 
   const url = `http://localhost:5000/menu`;

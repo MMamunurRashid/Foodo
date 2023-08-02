@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import DatePicker from "./DatePicker";
 import { toast } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const TableReservation = () => {
+  useTitle("Table Reservation");
   const { user } = useContext(AuthContext);
   const {
     register,

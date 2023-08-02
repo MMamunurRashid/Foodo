@@ -1,75 +1,98 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigation } from 'react-router-dom';
 import { BounceLoader } from "react-spinners";
+import useTitle from '../../../hooks/useTitle';
 
 const TotalSell = () => {
+    useTitle("Total Sell");
+    const [selectedValue, setSelectedValue] = useState('Today');
+    const [totalSellOrders, setTotalSellOrders] = useState([]);
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm();
 
 
-    // const Today = new Date().toISOString().split("T")[0];
-    // console.log(" date ", Today);
-    // const orderDates = ("2023-07-27T14:09:26.754Z").split("T")[0];
-    // console.log("order date ", orderDates);
-    // const {
-    //     data: orders = [],
-    // } = useQuery({
-    //     queryKey: ["users"],
-    //     queryFn: async () => {
-    //         const res = await fetch("http://localhost:5000/orders", {
-    //             headers: {
-    //                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    //             },
-    //         });
-    //         const data = await res.json();
-    //         return data;
-    //     },
-    // });
+    useEffect(() => {
+        fetch(
+            `http://localhost:5000/total-sell?option=${selectedValue}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+        }
+        )
+            .then((res) => res.json())
+            .then((data) => setTotalSellOrders(data))
+    }, [selectedValue,]);
 
-    // const ordersDate = orders.map((order) => (order.orderDate));
-    // // // Extract date only from each timestamp and create a new array
-    // // const datesOnlyArray = ordersDate.map(timestamp => timestamp.split('T')[0]);
+    const handleSelectChange = (data) => {
+        console.log(data.option);
+        setSelectedValue(data.option);
 
-    // // const orderDate = datesOnlyArray.join(',');
+    };
 
-    // // console.log(orderDate);
-    // // Get today's date
-    // const today = new Date();
-    // const todayDateOnly = today.toISOString().split('T')[0];
+    const totalSell = totalSellOrders?.reduce((acc, obj) => acc + obj.totalPrice, 0);
+    console.log(totalSell);
 
-    // // Compare each date in the array with today's date
-    // ordersDate.forEach(timestamp => {
-    //     const dateOnly = timestamp.split('T')[0];
-    //     if (dateOnly === todayDateOnly) {
-    //         console.log(`Date "${dateOnly}" in the array matches today's date.`);
-    //     } else {
-    //         console.log(`Date "${dateOnly}" in the array does not match today's date.`);
-    //     }
-    // });
-    // // // is loading
 
-    // // if (isLoading) {
-    // //     return (
-    // //         <div>
-    // //             <div className="flex justify-center items-center w-full h-screen">
-    // //                 <BounceLoader
-    // //                     color="#d63636"
-    // //                     cssOverride={{}}
-    // //                     loading
-    // //                     size={150}
-    // //                     speedMultiplier={1}
-    // //                 />
-    // //             </div>
-    // //         </div>
-    // //     );
-    // // }
-    // // console.log(users);
+    //options 
+    const options = [
+        'Today', 'Yesterday', 'This Month', 'Last Month']
+
+
+    const navigation = useNavigation();
+    if (navigation.state === "loading") {
+        return (
+            <div>
+                <div className="flex justify-center items-center w-full h-screen">
+                    <BounceLoader
+                        color="#d63636"
+                        cssOverride={{}}
+                        loading
+                        size={150}
+                        speedMultiplier={1}
+                    />
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div>
             <h1>Total Sell</h1>
-            <select className="select select-bordered w-full max-w-xs">
+            {/* <select onClick={handleSelect} className="select select-bordered w-full max-w-xs">
                 <option selected>Today</option>
                 <option>This Month</option>
                 <option>Last Month</option>
-            </select>
+            </select> */}
+            <div onChange={handleSubmit(handleSelectChange)}>
+                <label className="label">
+                    <span className="label-text ">Select For Total Sell</span>
+                </label>
+                <select
+                    {...register("option", {})}
+                    className="select select-bordered w-full"
+                >
+                    {options.map((p, idx) => (
+                        <option value={p} key={idx}>
+                            {p}
+                        </option>
+                    ))}
+                </select>
+                {errors.option && (
+                    <p className="text-red-500">{errors.option.message}</p>
+                )}
+            </div>
+            <div className='mt-5'>
+                <p className='text-xl'>Total No. of paid orders: {totalSellOrders?.length}</p>
+            </div>
+            <div className='mt-5'>
+                <p className='text-xl'>Total Sell: ৳{totalSell}</p>
+            </div>
         </div>
     );
 };

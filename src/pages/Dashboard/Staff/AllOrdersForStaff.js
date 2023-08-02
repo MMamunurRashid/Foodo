@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { BounceLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 const AllOrdersForStaff = () => {
+  useTitle("All Orders");
   const {
     data: orders = [],
     refetch,

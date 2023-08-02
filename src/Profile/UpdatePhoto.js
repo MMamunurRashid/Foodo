@@ -6,7 +6,9 @@ import { AuthContext } from "../Context/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 const UpdatePhoto = () => {
+  useTitle("Upload New Profile Picture");
   const { updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
@@ -37,7 +39,7 @@ const UpdatePhoto = () => {
             photoURL: imgData.data.url,
           };
           updateUserProfile(profilePhoto)
-            .then(() => {})
+            .then(() => { })
             .catch((error) => {
               console.error(error);
             });

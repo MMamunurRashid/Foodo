@@ -6,8 +6,10 @@ import HomeFoodCarousel from "./HomeFoodCarousel/HomeFoodCarousel";
 import AboutFoodo from "../AboutFoodo/AboutFoodo";
 import PhotoGallary from "../PhotoGallary/PhotoGallary";
 import Chef from "../Chef/Chef";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div id="home">
       {/* <div className="py-96 bg-gradient-to-r from-indigo-500"  style={{ backgroundImage: `url("https://i.ibb.co/fG1C9CD/h2-regular-items-bg-28bec6e3.png")` }}  >

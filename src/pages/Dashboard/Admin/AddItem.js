@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import { useNavigate, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import { BounceLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 const AddItem = () => {
+  useTitle("Add Item");
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();

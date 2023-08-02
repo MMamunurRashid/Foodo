@@ -9,8 +9,10 @@ import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { signIn, googleLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const {

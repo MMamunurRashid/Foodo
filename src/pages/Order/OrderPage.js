@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../../Font/Font.css";
 import { BsPlusCircle } from "react-icons/bs";
 import OrderCart from "./OrderCart";
+import useTitle from "../../hooks/useTitle";
 
 const OrderPage = () => {
+  useTitle("Order");
   const [items, setItems] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

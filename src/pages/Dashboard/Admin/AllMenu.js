@@ -5,8 +5,10 @@ import toast from "react-hot-toast";
 
 import { AuthContext } from "../../../Context/AuthProvider";
 import { Link } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 const AllMenu = () => {
+  useTitle("All Menu");
   const { user } = useContext(AuthContext);
 
   const url = `http://localhost:5000/menu`;

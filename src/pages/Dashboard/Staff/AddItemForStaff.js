@@ -40,6 +40,7 @@ const AddAItemForStaff = () => {
   const imgbbKey = "035fa433d4769de53906a7872698cbac";
 
   const handleAddProduct = (data) => {
+    const price = parseInt(data.price);
     const img = data.itemPhoto[0];
     // console.log(productPhoto);
     const formData = new FormData();
@@ -60,7 +61,7 @@ const AddAItemForStaff = () => {
             emailOfPoster: user.email,
             img: imgData.data.url,
             title: data.itemName,
-            price: data.price,
+            price: price,
           };
           // save  information to the database
           fetch("https://foodo-server.vercel.app/menu/staff", {
